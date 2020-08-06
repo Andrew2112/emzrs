@@ -11,7 +11,6 @@
     ?>
     <h1 class="text-center"><?= Html::encode($this->title) ?></h1>
     <div class="container">
-
         <div class="row">
 
             <div class="col-md-12 col-lg-8 mb-5">

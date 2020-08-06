@@ -18,14 +18,17 @@ class ContactController extends AppController
         $model = new ContactForm();
         /* получаем данные из формы и запускаем функцию отправки contact, если все хорошо, выводим сообщение об удачной отправке сообщения на почту */
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['emailto'])) {
+
+            Yii::$app->mailer->compose('message', compact('model'))
+                ->setTo(Yii::$app->params['emailto'])
+                ->setFrom('emzt@bk.ru')
+                ->setSubject('Письмо обратной связи')
+                ->send();
             Yii::$app->session->setFlash('contactFormSubmitted');
             return $this->refresh();
             /* иначе выводим форму обратной связи */
         } else {
-            return $this->render('view', [
-                'model' => $model,
-            ]);
+            return $this->render('view', compact('model'));
         }
-        //return $this->render('view');
     }
 }
