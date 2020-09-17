@@ -1,7 +1,10 @@
 <div class="site-section bg-light">
-    <? use yii\helpers\Html;
-    use yii\bootstrap\ActiveForm;
+    <?
+
     use yii\captcha\Captcha;
+    use yii\helpers\Html;
+    use yii\bootstrap\ActiveForm;
+
 
     /* @var $this yii\web\View */
     /* @var $form yii\bootstrap\ActiveForm */
@@ -39,10 +42,12 @@
                     <?= $form->field($model, 'subject')->textInput(['placeholder' => 'Тема сообщения']) ?>
 
                     <?= $form->field($model, 'body')->textArea(['rows' => 6, 'placeholder' => 'Текст сообщения']) ?>
-                    <!--                --><? //= $form->field($model, 'verifyCode')->widget(Captcha::class, [
-//                    'captchaAction' => '/index/captcha',
-//                    'template' => '<div class="row"><div class="col-lg-4">{image}</div><div class="col-lg-7">{input}</div></div>',
-//                ]) ?>
+                    <?=
+                    $form->field($model, 'verifyCode')->widget(Captcha::class, [
+                        //'captchaAction' => 'site/captcha', // uncomment and change if your not in the default controller or a module
+                        'template' => '<div class="row"><div class="col-lg-2">{image}</div><div class="col-lg-10">{input}</div></div>',
+                    ])->hint('Hint: click on the equation to refresh')
+                    ?>
 
                     <div class="form-group">
                         <?= Html::submitButton('Отправить сообщение', ['class' => 'btn btn-default waves-effect btn-color-orange btn-color-orange-long', 'name' => 'contact-button']) ?>
