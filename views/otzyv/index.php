@@ -19,7 +19,7 @@ use yii\helpers\Html;
 <!--                <h2 class="font-weight-light text-black display-4">--><?//=$category->title?><!--</h2>-->
             </div>
             <div class="col-md-12 text-center">
-                <p><?=$category->content?></p>
+                <p><?//=$category->content?></p>
             </div>
         </div>
         <div class="row mb-5">

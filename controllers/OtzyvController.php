@@ -13,7 +13,7 @@ class OtzyvController extends AppController
     {
         $title='Отзывы';
         $otzyv=Otzyv::find()->all();
-        $this->setMeta("{$title}::" . \Yii::$app->name, $otzyv->keywords, $otzyv->description);
+        $this->setMeta("{$title}::" . \Yii::$app->name, '', '');
         return $this->render('index', compact('otzyv'));
     }
 }
